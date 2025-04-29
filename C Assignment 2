@@ -1,0 +1,107 @@
+#include <string.h>
+
+void to_uppercase(char str[])
+{
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] >= 'a' && str[i] <= 'z')
+        {
+            str[i] = str[i] - 32;
+        }
+    }
+}
+
+void to_lowercase(char str[])
+{
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] >= 'A' && str[i] <= 'Z')
+        {
+            str[i] = str[i] + 32;
+        }
+    }
+}
+
+int count_vowels(const char str[])
+{
+    int count = 0;
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' ||
+            str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+void reverse_string(char str[])
+{
+    int len = 0;
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        len++;
+    }
+    int s = 0;
+    int e = len - 1;
+    char temp;
+
+    while (s < e)
+    {
+        temp = str[s];
+        str[s] = str[e];
+        str[e] = temp;
+
+        s++;
+        e--;
+    }
+}
+
+void sort_strings(char arr[][100], int n)
+{
+    char temp[100];
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (strcmp(arr[i], arr[j]) > 0)
+            {
+                strcpy(temp, arr[i]);
+                strcpy(arr[i], arr[j]);
+                strcpy(arr[j], temp);
+            }
+        }
+    }
+}
+
+#include <stdio.h>
+#include <string.h>
+
+// Function to reverse characters between indices start and end
+void reverse(char str[], int start, int end) {
+    while(start < end) {
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+
+void reverse_words(char str[]) {
+    int i = 0, start = 0;
+
+    while (str[i]) {
+        while (str[i] && str[i] == ' ')
+            i++;
+
+        start = i;
+
+        while (str[i] && str[i] != ' ')
+            i++;
+        reverse(str, start, i - 1);
+    }
+}
